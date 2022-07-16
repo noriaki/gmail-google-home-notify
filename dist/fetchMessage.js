@@ -12,6 +12,7 @@ const fetchMessage = async (after, config) => {
         mutableQuery.push(`{${fromQuery}}`);
     }
     mutableQuery.push(`after:${after}`);
+    mutableQuery.push('in:inbox');
     const result = await gmail.users.messages.list({
         userId: "me",
         maxResults: 1,
