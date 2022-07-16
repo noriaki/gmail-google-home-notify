@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const google_home_player_1 = __importDefault(require("google-home-player"));
 const config_1 = require("./config");
 const fetchMessage_1 = require("./fetchMessage");
 const createSpeechText_1 = require("./createSpeechText");
@@ -14,4 +18,9 @@ const createSpeechText_1 = require("./createSpeechText");
     console.log(text);
     if (!text)
         return;
+    const googleHome = new google_home_player_1.default(config.googleHomeIp, config.speechLanguage);
+    if (config.playSoundURL != null) {
+        await googleHome.play(config.playSoundURL);
+    }
+    await googleHome.say(text);
 })();
