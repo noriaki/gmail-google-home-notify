@@ -21,6 +21,9 @@ import { createTimestamp, loadTimestamp, saveTimestamp } from "./timestamp";
     config.googleHomeIp,
     config.speechLanguage
   );
+  if (config.playSoundURL != null) {
+    await googleHome.play(config.playSoundURL);
+  }
   await googleHome.say(text);
 
   await saveTimestamp(nextTs);

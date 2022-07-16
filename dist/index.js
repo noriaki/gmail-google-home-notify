@@ -19,6 +19,9 @@ const timestamp_1 = require("./timestamp");
     if (!text)
         return;
     const googleHome = new google_home_player_1.default(config.googleHomeIp, config.speechLanguage);
+    if (config.playSoundURL != null) {
+        await googleHome.play(config.playSoundURL);
+    }
     await googleHome.say(text);
     await (0, timestamp_1.saveTimestamp)(nextTs);
 })();

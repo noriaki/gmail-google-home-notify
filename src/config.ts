@@ -10,6 +10,7 @@ export type Config = {
   readonly googleClientSecret: string;
   readonly googleHomeIp: string;
   readonly speechLanguage: string;
+  readonly playSoundURL?: string;
   readonly emails: readonly string[];
   readonly conditions: readonly SpeechTextCondition[];
 };
